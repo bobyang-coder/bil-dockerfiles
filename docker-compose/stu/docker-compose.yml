@@ -1,0 +1,23 @@
+version: '3'
+services: 
+  es:
+    image: elasticsearch:6.4.2
+    container_name: docker-es
+    ports: 
+      - 9200:9200
+    networks: 
+      - bob-net
+  app-stu-es:
+    image: bob/stu-es:0.0.1-SNAPSHOT
+    container_name: app-stu-es
+    ports: 
+      - 9090:8080
+    networks: 
+      - bob-net
+    environment: 
+      - discovery.type=single-node
+    depends_on: 
+      - es
+networks: 
+  bob-net:
+    # network_mode: 默认bridge
