@@ -1,9 +1,0 @@
-version: '2'
-services: 
-  # 指定服务名称
-  redis:
-    # 执行服务所使用的镜像
-    image: bob/redis
-    # 暴露端口信息
-    ports: 
-      - "9090:9090"
