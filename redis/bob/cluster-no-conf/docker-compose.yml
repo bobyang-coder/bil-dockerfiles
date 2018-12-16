@@ -1,5 +1,5 @@
 # redis集群
-# 注：不使用redis.conf文件方式，直接将文件名修改为docker-compose.yml进行构建
+# 注：不使用redis.conf文件方式
 # 参考链接：https://github.com/Grokzen/docker-redis-cluster
 # 手动创建集群：docker run -it --network bob_net-redis-cluster --rm redis redis-cli --cluster create --cluster-replicas 1 redis-node1:6379 redis-node2:6379 redis-node3:6379 redis-node4:6379 redis-node5:6379 redis-node6:6379
 # 启动redis-cli：docker run -it --network bob_net-redis-cluster --rm redis redis-cli -h redis-node1 -p 6379
