@@ -21,7 +21,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
   
   # 节点2
@@ -33,7 +32,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
   # 节点3
@@ -45,7 +43,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
   # 节点4
@@ -57,7 +54,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
   # 节点5
@@ -69,7 +65,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
   # 节点6
@@ -81,7 +76,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-    # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
 # 网络
