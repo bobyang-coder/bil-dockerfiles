@@ -12,21 +12,6 @@
 version: '3'
 services: 
 
-  # redis-cli创建集群
-  redis-cluster:
-    image: redis:5.0.2
-    command: 
-      - redis-cli --cluster create --cluster-replicas 1 173.17.0.2:6379 173.17.0.3:6379 173.17.0.4:6379 173.17.0.5:6379 173.17.0.6:6379 173.17.0.7:6379
-    networks: 
-      - net-redis-cluster 
-    depends_on: 
-     - redis-node1
-     - redis-node2
-     - redis-node3
-     - redis-node4
-     - redis-node5
-     - redis-node6
-
   # 节点1
   redis-node1:
     image: redis:5.0.2
@@ -36,7 +21,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.2
     # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
   
@@ -49,7 +33,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.3
     # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
@@ -62,7 +45,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.4
     # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
@@ -75,7 +57,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.5
     # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
@@ -88,9 +69,8 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.6
     # 不引用redis.conf文件
-    command: redis-server  /usr/local/etc/redis/redis_cluster.conf
+    command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
   # 节点6
   redis-node6:
@@ -101,7 +81,6 @@ services:
     restart: always
     networks: 
       net-redis-cluster:
-        ipv4_address: 173.17.0.7
     # 不引用redis.conf文件
     command: redis-server --cluster-enabled yes --cluster-config-file nodes.conf --cluster-node-timeout 5000 --appendonly yes
 
@@ -111,5 +90,3 @@ networks:
     driver: bridge
     ipam: 
       driver: default
-      config: 
-        - subnet: 173.17.0.0/16
