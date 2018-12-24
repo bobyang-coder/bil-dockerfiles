@@ -7,8 +7,8 @@
 # docker run -v /Users/bianlifeng/Documents/github/bil-dockerfiles/redis/bob/redis_cluster.conf:/usr/local/etc/redis/redis_cluster.conf --name myredis -d  redis redis-server /usr/local/etc/redis/redis_cluster.conf
 
 # TODO :
-#  1. 思考怎么将network中的固定ip去掉
-#  2. 将配置文件进一步公用化
+#  1. 思考怎么将network中的固定ip去掉   2018年12月24日 done
+#  2. 将配置文件进一步公用化                   2018年12月24日 done
 version: '3'
 services: 
 
