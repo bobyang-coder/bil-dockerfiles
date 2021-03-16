@@ -1,0 +1,39 @@
+# 参考：https://github.com/apache/flink-docker
+# https://blog.csdn.net/godelgnis/article/details/104528408
+version: '3'
+services:
+  jobmanager:
+    image: apache/flink:1.10-scala_2.11
+    expose:
+      - "6123"
+    ports:
+      - "8081:8081"
+    command: jobmanager
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+
+  taskmanager:
+    image: apache/flink:1.10-scala_2.11
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
+  
+  taskmanager2:
+    image: apache/flink:1.10-scala_2.11
+    expose:
+      - "6121"
+      - "6122"
+    depends_on:
+      - jobmanager
+    command: taskmanager
+    links:
+      - "jobmanager:jobmanager"
+    environment:
+      - JOB_MANAGER_RPC_ADDRESS=jobmanager
