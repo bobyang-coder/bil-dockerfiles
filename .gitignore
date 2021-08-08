@@ -5,3 +5,6 @@
 /.vscode
 /**/.DS_Store
 .DS_Store
+/**/some_clickhouse_database
+.DS_Store
+.DS_Store
